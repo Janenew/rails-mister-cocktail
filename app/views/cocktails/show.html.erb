@@ -1,0 +1,33 @@
+<h1 class="text-center"> <%= @cocktail.name %> </h1>
+
+
+<div class="col-xs-12 col-md-4">
+
+<h2> Ingredients </h2>
+<p><%= @cocktail.image_url %></p>
+  <ul>
+    <% @doses.each do |dose| %>
+      <li>
+        <%= link_to dose.ingredient.name, cocktail_ingredient_path(@cocktail, dose.ingredient) %>
+        : <%= dose.description %>
+        |  <%= link_to "delete", dose_path(dose), method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+
+  <h3> New Ingredient </h3>
+
+  <%= simple_form_for [@cocktail, @dose] do |form| %>
+    <%= form.input :description %>
+    <%= form.input :ingredient_id, collection: Ingredient.all, prompt: "Choose one ingredient" %>
+    <%= form.submit class: "btn btn-primary" %>
+  <% end %>
+
+
+
+
+  <%= link_to "back to cocktails", cocktails_path %>
+</div>
+
+
+

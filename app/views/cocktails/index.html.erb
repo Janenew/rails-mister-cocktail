@@ -1,0 +1,33 @@
+<h1 class="text-center">Cocktails</h1>
+
+<div class="container">
+  <div class="row">
+    <% @cocktails.each do |cocktail| %>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <!-- insert <div class="card"> -->
+
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+      url(<%= image_url(cocktail.image_url)  %>);">
+        <div class="card-category"> <%= cocktail.name %> </div>
+        <div class="card-description">
+          <h2> <%= link_to cocktail.name, cocktail_path(cocktail) %> </h2>
+
+      </div>
+        <%= link_to cocktail.name, cocktail_path(cocktail) , class: "card-link" %>
+      </div>
+
+
+        <%= link_to "delete", cocktail_path(cocktail), method: :delete %>
+
+
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+

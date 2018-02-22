@@ -1,0 +1,12 @@
+<h1 class="text-center"> <%= @ingredient.name %> </h1>
+
+<p> Cet ingrédient est utilisé dans les cocktails suivants : </p>
+<% @cocktails.each do |cocktail| %>
+  <div class="col-xs-12 col-sm-6 col-md-4">
+
+    <p> <%= cocktail.name %> </p>
+
+  </div>
+<% end %>
+
+<%= link_to "back", cocktails_path %>
