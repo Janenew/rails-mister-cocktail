@@ -1,7 +1,6 @@
 require 'json'
 require 'open-uri'
 
-db/seeds.rb
 Ingredient.create(name: "lemon")
 Ingredient.create(name: "ice")
 Ingredient.create(name: "mint leaves")
