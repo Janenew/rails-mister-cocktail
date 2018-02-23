@@ -41,7 +41,8 @@ cocktails_params =
   { name: 'Pina colada',
     image_url: 'https://images.unsplash.com/photo-1501118926561-2d75eefb2628?ixlib=rb-0.3.5&s=577aa46cd2b044c7401a1b1ac944e3d3&auto=format&fit=crop&w=334&q=80'
   },
-  { name: 'Martihttps://images.unsplash.com/photo-1444728399417-08d2aa39e6f4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a75d09107dd70d0e844460c45024ca3c&auto=format&fit=crop&w=1050&q=80'
+  { name: 'Martini',
+    image_url: 'https://images.unsplash.com/photo-1444728399417-08d2aa39e6f4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a75d09107dd70d0e844460c45024ca3c&auto=format&fit=crop&w=1050&q=80'
   }
 ]
 Cocktail.create!(cocktails_params)
