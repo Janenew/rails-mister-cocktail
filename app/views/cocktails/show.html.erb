@@ -1,33 +1,62 @@
-<h1 class="text-center"> <%= @cocktail.name %> </h1>
 
+  <% if !notice.nil? %>
+    <div class="alert alert-info alert-dismissable" id="notice">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <span><%= notice %></span>
+    </div>
+  <% end %>
 
-<div class="col-xs-12 col-md-4">
+<div class="col-xs-12 col-md-6 ">
+  <h1> <%= @cocktail.name %> </h1>
+  <%= image_tag @cocktail.image_url, width: 300, height: 200 %>
+  <p>
 
-<h2> Ingredients </h2>
-<p><%= @cocktail.image_url %></p>
+  </p>
+
+  <h2> Composition : </h2>
+
   <ul>
     <% @doses.each do |dose| %>
       <li>
         <%= link_to dose.ingredient.name, cocktail_ingredient_path(@cocktail, dose.ingredient) %>
         : <%= dose.description %>
-        |  <%= link_to "delete", dose_path(dose), method: :delete %>
+        | <%= link_to "<i class=\"glyphicon glyphicon-trash\"></i>".html_safe, dose_path(dose),
+    method: :delete,
+    data: { confirm: "Are you sure?" } %>
       </li>
     <% end %>
   </ul>
+</div>
 
-  <h3> New Ingredient </h3>
+<div class="col-xs-12 col-md-3">
+
+  <h3> Add an ingredient </h3>
 
   <%= simple_form_for [@cocktail, @dose] do |form| %>
-    <%= form.input :description %>
-    <%= form.input :ingredient_id, collection: Ingredient.all, prompt: "Choose one ingredient" %>
+    <%= form.association :ingredient, prompt: "Choose the ingredient" %>
+    <%= form.input :description , label: "Dose" %>
+
     <%= form.submit class: "btn btn-primary" %>
   <% end %>
 
-
-
-
-  <%= link_to "back to cocktails", cocktails_path %>
 </div>
+
+<div class="col-xs-12 col-md-12 ">
+  <p>
+    <%= link_to "<i class=\"glyphicon glyphicon-step-backward\"></i>".html_safe + " Back to list", cocktails_path %>
+
+    <%= link_to "<i class=\"glyphicon glyphicon-trash\"></i>".html_safe + " Delete cocktail", cocktail_path(@cocktail),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+  </p>
+</div>
+
+
+
+
+
+
+
 
 
 

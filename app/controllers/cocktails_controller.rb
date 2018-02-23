@@ -17,7 +17,7 @@ class CocktailsController < ApplicationController
   def create
     @cocktail = Cocktail.new(cocktail_params)
     if @cocktail.save
-      redirect_to cocktail_path(@cocktail)
+      redirect_to cocktail_path(@cocktail), notice: 'Cocktail succesfully created'
     else
       render :new
     end
@@ -25,7 +25,7 @@ class CocktailsController < ApplicationController
 
   def destroy
     @cocktail.destroy
-    redirect_to cocktails_path
+    redirect_to cocktails_path, notice: 'Cocktail succesfully destroyed'
   end
 
   private

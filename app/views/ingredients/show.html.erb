@@ -1,12 +1,13 @@
 <h1 class="text-center"> <%= @ingredient.name %> </h1>
 
-<p> Cet ingrédient est utilisé dans les cocktails suivants : </p>
-<% @cocktails.each do |cocktail| %>
-  <div class="col-xs-12 col-sm-6 col-md-4">
-
-    <p> <%= cocktail.name %> </p>
-
-  </div>
-<% end %>
-
-<%= link_to "back", cocktails_path %>
+<p> This ingredient is used in the following cocktails : </p>
+<ul>
+  <% @cocktails.each do |cocktail| %>
+      <li>
+        <%= link_to cocktail.name, cocktail_path(cocktail) %>
+      </li>
+  <% end %>
+</ul>
+<p>
+  <%= link_to "<i class=\"glyphicon glyphicon-step-backward\"></i>".html_safe + " Back to cocktail list", cocktails_path %>
+</p>
